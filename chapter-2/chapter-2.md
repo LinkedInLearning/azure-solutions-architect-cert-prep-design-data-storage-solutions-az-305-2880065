@@ -26,13 +26,15 @@ Don't forget to choose a region where there are availability zones!
 
     az deployment group create --resource-group rg-storage --template-file standard.bicep --parameters storageSKU=Standard_GRS
 
-## 02_03 List the files in the primary container (public access)
+## 02_02 List the files in the primary container (public access)
+
+This is the bicep file from the geo-redundancy demo
 
     az account set --subscription <subscriptionid>
 
-    az group create --name rg-storage --location uksouth
+    az group create --name rg-ragrs --location northeurope
 
-    az deployment group create --resource-group rg-storage --template-file standard-ragrs-secondary.bicep
+    az deployment group create --resource-group rg-ragrs --template-file standard-ragrs-secondary.bicep
 
 Use a browser to list the primary container
 
@@ -51,7 +53,7 @@ Use Azure CLI to checkout the last synch time
 
     az storage account show \
         --name <storage-account> \
-        --resource-group rg-storage \
+        --resource-group rg-ragrs \
         --expand geoReplicationStats \
         --query geoReplicationStats.lastSyncTime \
         --output tsv
