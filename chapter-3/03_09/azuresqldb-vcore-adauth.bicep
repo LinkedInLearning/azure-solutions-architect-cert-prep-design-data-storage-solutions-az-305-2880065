@@ -1,0 +1,68 @@
+@description('Static prefix for the server')
+@minLength(3)
+@maxLength(11)
+param serverPrefix string
+
+@description('Admin username for authentication')
+param adminUsername string = 'sqladmin'
+
+@description('Password for the admin username')
+@minLength(12)
+@secure()
+param adminPassword string
+
+@description('ObjectID for your user')
+param adminObjectId string
+
+@description('UPN for your user')
+param adminUPN string
+
+@description('SKU for database')
+@allowed([
+  'GP_Gen5_2'
+  'GP_Gen5_4'
+  'GP_Gen5_8'
+])
+param skuName string = 'GP_Gen5_2'
+
+@description('Allowed values for vCore')
+@allowed([
+  'GeneralPurpose'
+  'BusinessCritical'
+])
+param skuTier string = 'GeneralPurpose'
+
+var uniqueServerName = '${serverPrefix}${uniqueString(resourceGroup().id)}'
+
+param maxSizeBytes int = 10737418240
+
+@description('Location for all resources.')
+param location string = resourceGroup().location
+
+resource sqlserver 'Microsoft.Sql/servers@2021-11-01-preview' = {
+  name: uniqueServerName
+  location: location
+  properties: {
+    administratorLogin: adminUsername
+    administratorLoginPassword: adminPassword
+    administrators: {
+      administratorType: 'ActiveDirectory'
+      azureADOnlyAuthentication: false
+      login: adminUPN
+      principalType: 'User'
+      sid: adminObjectId
+      tenantId: subscription().tenantId
+    }
+  }
+  resource sqldb 'databases@2021-11-01-preview' = {
+    name: 'vcoredb'
+    location: location
+    sku: {
+      name: skuName
+      tier: skuTier
+    }
+    properties: {
+      maxSizeBytes: maxSizeBytes
+    }
+  }
+}

@@ -1,30 +1,29 @@
 # Azure Solutions Architect Cert Prep: Design Data Storage Solutions (AZ-305)
 This is the repository for the LinkedIn Learning course Azure Solutions Architect Cert Prep: Design Data Storage Solutions (AZ-305). The full course is available from [LinkedIn Learning][lil-course-url].
 
-_See the readme file in the main branch for updated instructions and information._
 ## Instructions
-This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
+This repository has chapters and then folders for each of the videos with demos in the course. The naming convention is `CHAPTER-#/CHAPTER#_MOVIE#`. As an example, folder structure of `chapter-2/02_03` corresponds to the second chapter and the third video in that chapter.
 
-## Branches
-The branches are structured to correspond to the videos in the course. The naming convention is `CHAPTER#_MOVIE#`. As an example, the branch named `02_03` corresponds to the second chapter and the third video in that chapter. 
-Some branches will have a beginning and an end state. These are marked with the letters `b` for "beginning" and `e` for "end". The `b` branch contains the code as it is at the beginning of the movie. The `e` branch contains the code as it is at the end of the movie. The `main` branch holds the final state of the code when in the course.
+Each chapter has a readme file giving the Azure CLI commands to be used to create the environments in the corresponding video. The Azure CLI commands use [Azure Bicep](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep) to deploy resources to the specified resource group.
 
-When switching from one exercise files branch to the next after making changes to the files, you may get a message like this:
+The files in this repository are not exercise files, they have been designed so that the environments shown in the demos can be built and learners can follow along.
 
-    error: Your local changes to the following files would be overwritten by checkout:        [files]
-    Please commit your changes or stash them before you switch branches.
-    Aborting
-
-To resolve this issue:
-	
-    Add changes to git using this command: git add .
-	Commit changes using this command: git commit -m "some message"
 
 ## Installing
-1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
-2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
+
+The files in this repository require no additional software to be installed locally. The repository can be checked out directly to the Azure Cloudshell within the Azure Portal. However, it is recommended to install Visual Studio Code locally, in order to view the Azure CLI commands and the Azure Bicep files:
+
+1. Install [Visual Studio Code](https://code.visualstudio.com/) locally, following the instructions for you operating system.
+2. Install the [Azure Bicep Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) to Visual Studio Code locally.
+3. Install the [Azure CLI Tools](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azurecli) to Visual Studio Code locally.
+4. Clone the repository to the Azure Cloudshell using:
+	- git checkout https://github.com/LinkedInLearning/azure-solutions-architect-cert-prep-design-data-storage-solutions-az-305-2880065.git
+
+    And locally using the same command to view the Azure bicep files in Visual Studio Code.
+5. In the local Visual Studio Code open the chapter specific readme for the Azure CLI commands for each video. 
+6. `cd` into the chapter and video folders in the Azure Cloudshell and paste in the commands and execute them to create an environment.
+
+Steps 5 and 6 are demonstrated in Chapter 2 - Video 2.
 
 
 [0]: # (Replace these placeholder URLs with actual course URLs)

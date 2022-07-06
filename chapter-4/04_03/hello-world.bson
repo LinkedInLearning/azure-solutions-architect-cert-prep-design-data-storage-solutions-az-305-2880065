@@ -1,0 +1,5 @@
+\x16\x00\x00\x00             //document size
+\x02                         //data type of string
+hello\x00                    //field name
+\x06\x00\x00\x00world\x00    //file value
+\x00                         //end of object

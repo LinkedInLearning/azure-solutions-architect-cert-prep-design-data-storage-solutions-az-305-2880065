@@ -1,0 +1,124 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualMachineName": {
+      "value": "az305sql"
+    },
+    "virtualMachineSize": {
+      "value": "Standard_E2bs_v5"
+    },
+    "vnetName": {
+      "value": "vnet-az305-sqlvm"
+    },
+    "subnetName": {
+      "value": "snet-az305-sqlvm"
+    },
+    "networkSecurityGroupName": {
+      "value": "nsg-az305-sqlvm"
+    },
+    "osDiskType": {
+      "value": "Premium_LRS"
+    },
+    "dataDisks": {
+      "value": [
+        {
+          "createOption": "empty",
+          "caching": "ReadOnly",
+          "writeAcceleratorEnabled": false,
+          "storageAccountType": "Premium_LRS",
+          "diskSizeGB": 64
+        },
+        {
+          "createOption": "empty",
+          "caching": "None",
+          "writeAcceleratorEnabled": false,
+          "storageAccountType": "Premium_LRS",
+          "diskSizeGB": 32
+        },
+        {
+          "createOption": "empty",
+          "caching": "ReadOnly",
+          "writeAcceleratorEnabled": false,
+          "storageAccountType": "Premium_LRS",
+          "diskSizeGB": 32
+        }
+      ]
+    },
+    "imageType": {
+      "value": "SQL2019-WS2019"
+    },
+    "imageSku": {
+      "value": "Standard"
+    },
+    "publisher": {
+      "value": "MicrosoftSQLServer"
+    },
+    "enableAcceleratedNetworking": {
+      "value": true
+    },
+    "adminUsername": {
+      "value": "sqladmin"
+    },
+    "sqlConnectivityType": {
+      "value": "PRIVATE"
+    },
+    "sqlPortNumber": {
+      "value": 1433
+    },
+    "sqlStorageWorkloadType": {
+      "value": "OLTP"
+    },
+    "sqlServerLicenseType": {
+      "value": "AHUB"
+    },
+    "ekmAkvName": {
+      "value": "<ekmAkvName>"
+    },
+    "sqlAkvPrincipalName": {
+      "value": "<sqlAkvPrincipalName>"
+    },
+    "sqlAkvPrincipalSecret": {
+      "value": "<sqlAkvPrincipalSecret>"
+    },
+    "enableAkvEkm": {
+      "value": false
+    },
+    "dataPath": {
+      "value": "F:\\SQLData"
+    },
+    "dataDisksLUNs": {
+      "value": [
+        0
+      ]
+    },
+    "logPath": {
+      "value": "G:\\SQLLog"
+    },
+    "logDisksLUNs": {
+      "value": [
+        1
+      ]
+    },
+    "tempDBPath": {
+      "value": "H:\\SQLTemp"
+    },
+    "tempDBDisksLUNs": {
+      "value": [
+        2
+      ]
+    },
+    "sqlAuthUpdateUserName": {
+      "value": "sqladmin"
+    },
+    "enableAutoBackup": {
+      "value": true
+    },
+    "rServicesEnabled": {
+      "value": false
+    },
+    "autoBackupStorageAccountName": {
+      "value": "az305sqlvmbackup"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+"C:\Program Files\Microsoft Corporation\RMLUtils\ostress.exe" -Saz305perfuz5w5jxibmnk6.database.windows.net -itopcustomersales.sql -Usqladmin -daw17lt -PadminsqlPass1! -n10 -r2 -q
