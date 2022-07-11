@@ -107,9 +107,9 @@ To enable CMK encryption for Tables and queues
 
 Create the keyvault
 
-Get your users objectId
+Get your users id
 
-    az ad signed-in-user show --query objectId -o tsv
+    az ad signed-in-user show --query id -o tsv
 
     az deployment group create --resource-group rg-encrypt-sa --template-file keyvault.bicep
 
