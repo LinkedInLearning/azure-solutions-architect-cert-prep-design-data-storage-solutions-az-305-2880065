@@ -29,10 +29,10 @@ param filename string = 'blob.txt'
 param containerName string = 'data'
 
 @description('Enable encrypted queues')
-param enableEncryptedQueues bool = false
+param enableEncryptedQueues bool = true
 
 @description('Enable encrypted tables')
-param enableEncryptedTables bool = false
+param enableEncryptedTables bool = true
 
 var uniqueStorageName = '${storagePrefix}${uniqueString(resourceGroup().id)}'
 

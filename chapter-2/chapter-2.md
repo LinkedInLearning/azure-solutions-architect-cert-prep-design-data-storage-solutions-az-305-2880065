@@ -60,9 +60,9 @@ Use Azure CLI to checkout the last synch time
 
 Use Azure CLI to list from a file share
     
-    az storage file list --account-name <accountname> --name <filesharename>
+    az storage file list --account-name <accountname> --share-name <filesharename>
 
-    az storage file list --account-name <accountname> --name <filesharename> --account-key <accountKey>
+    az storage file list --account-name <accountname> --share-name <filesharename> --account-key <accountKey>
 
 Use Azure CLI to delete a file share
     
@@ -71,9 +71,6 @@ Use Azure CLI to delete a file share
 List a container - requires the SAS key to be added on
     
     https://<accountname>.blob.core.windows.net/<containername>?restype=container&comp=list
-
-
-## 02_03 Create a bicep template that links a VM to storage using managed identity?
 
 ## 02_04 Public & Private Networking
 
@@ -93,6 +90,8 @@ Create two vms in seperate subnets in the same vnet with RDP access through nsgs
 Note this uses a VNet of 10.0.0.0/16, if this is already being used, you'll need to change the underlying scripts
 
     az deployment group create --resource-group rg-networking-sa --template-file vms-service-endpoint.bicep --parameters adminUsername=superuser
+
+    password  passAdmin123!!
 
 ## 02_05 Customer-managed keys
 
