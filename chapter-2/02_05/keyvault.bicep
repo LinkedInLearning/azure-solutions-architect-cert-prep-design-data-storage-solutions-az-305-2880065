@@ -3,7 +3,7 @@
 param userObjectId string
 
 @description('Name for the keyvault')
-param kvname string = 'kv305encryptsa'
+param kvname string = 'kvsa305encrypt'
 
 @description('Azure region where resources will be deployed, pulled from resourceGroup')
 param location string = resourceGroup().location
