@@ -169,7 +169,7 @@ If you run this two containers and two blobs in each will be added. To delete th
 
     az deployment group create --resource-group rg-immutable-sa --template-file standard-blob-immutable-version-level.bicep --parameters storageSKU=Standard_LRS
 
-Add a storage account with no immutability set at the storage account
+Add a storage account with no immutability set at the storage account (This is the setup for the demo)
 
     az deployment group create --resource-group rg-immutable-sa --template-file standard-blob-immutable-notset.bicep --parameters storageSKU=Standard_LRS
 
@@ -186,6 +186,6 @@ Standard hot tier fileshare
 
     az deployment group create --resource-group rg-fileshare-sa --template-file standard-fileshare-hot.bicep
 
-Premium fileshare 2GB quota
+Premium fileshare 2GB quota (Used in the demo)
 
     az deployment group create --resource-group rg-fileshare-sa --template-file premium-fileshare.bicep
