@@ -1,1 +1,1 @@
-"C:\Program Files\Microsoft Corporation\RMLUtils\ostress.exe" -Saz305perfuz5w5jxibmnk6.database.windows.net -iorder_rating_insert_single.sql -Usqladmin -daw17lt -PadminsqlPass1! -n25 -r100 -q
+"C:\Program Files\Microsoft Corporation\RMLUtils\ostress.exe" -Ssqlperfb73tozm2w62fk.database.windows.net -iorder_rating_insert_single.sql -Usqladmin -dAdventureWorksLT2017 -PadminPass123!!! -n12 -r40 -q
