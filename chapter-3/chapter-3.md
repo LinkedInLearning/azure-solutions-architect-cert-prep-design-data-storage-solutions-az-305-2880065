@@ -193,9 +193,15 @@ Create a logical server and a log analytics workspace
 
     az deployment group create --resource-group rg-perf-sql --template-file azuresqldb-vcore.bicep
 
+    adminUsername sqladmin
+
+    Password adminPass123!!!
+
 Create a VM to introduce load to the Azure SQL DB
 
     az deployment group create --resource-group rg-perf-sql --template-file windows10-vm.bicep --parameters adminUsername=sqladmin
+
+    Password adminPass123!!!
 
 Setup the VM to create load on the Azure SQL DB
 
@@ -225,7 +231,7 @@ Setup the VM to create load on the Azure SQL DB
 
     There are also cmd files in the other performance directories, edit those with r10 and the path to ostress and run them to create load (one at a time)
 
-11. To create continuous load run the cmd files staggered in Tash Scheduler, you will need to set the action to start in the directory the cmd files are in. It takes about a days load from inserting and selecting on the non-indexed table to get a tuning recommendation. There are scripts in this folder to overwrite the ones from the github repo, these will run if correctly spaced apart for 15 minutes and will gradually increase the load on the database adding more and more rows.
+11. To create continuous load run the cmd files staggered in Task Scheduler, you will need to set the action to start in the directory the cmd files are in. It takes about a days load from inserting and selecting on the non-indexed table to get a tuning recommendation. There are scripts in this folder to overwrite the ones from the github repo, these will run if correctly spaced apart for 15 minutes and will gradually increase the load on the database adding more and more rows.
 
 
 ## 03_14 - SQLVM IaaS Agent

@@ -113,7 +113,7 @@ resource securityGroup 'Microsoft.Network/networkSecurityGroups@2021-02-01' = {
       {
         name: 'default-allow-1434-UDP'
         properties: {
-          priority: 1002
+          priority: 1003
           access: 'Allow'
           direction: 'Inbound'
           destinationPortRange: '1434'
