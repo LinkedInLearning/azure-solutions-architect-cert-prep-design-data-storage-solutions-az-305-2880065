@@ -10,6 +10,8 @@ Create a logical Server for Azure SQL DB.
 
     az deployment group create --resource-group rg-intro-sql --template-file azuresqldb-server.bicep
 
+    adminPass123!!!
+
 ## 03_02 - purchasing models
 
 To follow the demo in the video, create the logical server using the script in 03_01 and the Azure CLI command above.
@@ -95,18 +97,17 @@ Create a vCore Db (to test encrypted connect string and bring your own TDE prote
 
     az deployment group create --resource-group rg-encrypt-sql --template-file azuresqldb-vcore.bicep
 
-Get your user's objectID
+Get your user's id from graph
 
-    az ad signed-in-user show --query objectId -o tsv
+    az ad signed-in-user show --query id -o tsv
 
-Create a keyvault and pass in your objectId to grant access to setup CMK
+Create a keyvault and pass in your id to grant access to setup CMK, note this bicep file creates a key for you.
 
     az deployment group create --resource-group rg-encrypt-sql --template-file keyvault.bicep --parameters userObjectId=<>
 
 Create a Key Vault with User Managed Identity to use CMK from creation
 
     az deployment group create --resource-group rg-encrypt-sql --template-file keyvault-umi.bicep --parameters serverPrefix=az305cmk userObjectId=<>
-
 
 
 ## 03_08 - Always Encrypted
@@ -119,9 +120,11 @@ Create a vCore Db
 
     az deployment group create --resource-group rg-alwaysencrypted-sql --template-file azuresqldb-vcore.bicep
 
-Get your user's objectID
+You will need to add your client IP address to the server network config for access.
 
-    az ad signed-in-user show --query objectId -o tsv
+Get your user's id from graph
+
+    az ad signed-in-user show --query id -o tsv
 
 Create a keyvault pass in your objectId to grant access to setup CMK
 
@@ -155,7 +158,7 @@ Use the create-members.sql script for the demo
     
     az group create --name rg-audit-sql --location <location>
 
-Create two storage accounts in different regions, one in the same region as the Azure SQL DB
+Create two storage accounts in different regions, one in the same region as the Azure SQL DB. To follow the demo the storage accounts and the vcode db below must be created first.
 
     az deployment group create --resource-group rg-audit-sql --template-file storage-standard.bicep --parameters secondLocation=<>
 
@@ -174,7 +177,7 @@ Create a General Purpose Zone redundant Azure SQL DB, at time of writing some re
 
     az deployment group create --resource-group rg-habc-sql --template-file azuresqldb-zonal.bicep
 
-Create a vcore DB to setup geo-replication from
+Demo starts from here - Create a vcore DB to setup geo-replication from
 
     az deployment group create --resource-group rg-habc-sql --template-file azuresqldb-geo-replication.bicep
 
@@ -240,6 +243,15 @@ Setup the VM to create load on the Azure SQL DB
     There are also cmd files in the other performance directories, edit those , starting with r10 and the path to ostress and run them to create load (one at a time), ensure they all complete within 15 minutes if you are to continue with step 12. The values given for threads and runs were set for a S1 DTU model DB with 20 DTU.
 
 12. To create continuous load run the cmd files staggered in Task Scheduler, you will need to set the action to start in the directory the cmd files are in. It takes about a days load from inserting and selecting on the non-indexed table to get a tuning recommendation. There are scripts in this folder to overwrite the ones from the github repo, these will run if correctly spaced apart for 15 minutes and will gradually increase the load on the database adding more and more rows.
+
+
+## 03_13 - SQLVM
+
+Create a resource group for the VM (East US 2)
+
+    az account set --subscription <subscriptionid>
+    
+    az group create --name rg-sqlvm-sql --location
 
 
 ## 03_14 - SQLVM IaaS Agent

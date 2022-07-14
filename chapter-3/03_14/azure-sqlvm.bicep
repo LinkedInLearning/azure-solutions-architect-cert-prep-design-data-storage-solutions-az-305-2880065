@@ -53,7 +53,7 @@ param dataDisks array = [
   'SQL2019-WS2019'
   'SQL2019-WS2019'
   'WindowsServer'
-  
+
 ])
 param imageType string
 
@@ -247,13 +247,13 @@ resource pip 'Microsoft.Network/publicIPAddresses@2021-02-01' = {
   properties: {
     publicIPAllocationMethod: 'Dynamic'
     dnsSettings: {
-      domainNameLabel:  toLower('nonsqlvm-${uniqueString(resourceGroup().id, 'nonsqlvm')}')
+      domainNameLabel: toLower('nonsqlvm-${uniqueString(resourceGroup().id, 'nonsqlvm')}')
     }
   }
 }
 
 resource nic2 'Microsoft.Network/networkInterfaces@2019-07-01' = {
-  name: 'nic-nonsqlvm'
+  name: 'nic-az305mansql'
   location: location
   properties: {
     ipConfigurations: [
