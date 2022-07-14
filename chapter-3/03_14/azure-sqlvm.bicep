@@ -253,12 +253,12 @@ resource pip 'Microsoft.Network/publicIPAddresses@2021-02-01' = {
 }
 
 resource nic2 'Microsoft.Network/networkInterfaces@2019-07-01' = {
-  name: 'nic-az305mansql'
+  name: 'nic-nonsqlvm'
   location: location
   properties: {
     ipConfigurations: [
       {
-        name: 'ipconfig1'
+        name: 'ip-nonsqlvm'
         properties: {
           subnet: {
             id: resourceId(vnetResourceGroup, 'Microsoft.Network/virtualNetworks/subnets', vnetName, subnetName)
@@ -276,9 +276,9 @@ resource nic2 'Microsoft.Network/networkInterfaces@2019-07-01' = {
 }
 
 module vmnonsql './vm.bicep' = {
-  name: 'az305mansql'
+  name: 'nonsqlvm'
   params: {
-    virtualMachineName: 'az305mansql'
+    virtualMachineName: 'nonsqlvm'
     location: location
     virtualMachineSize: virtualMachineSize
     osDiskType: osDiskType
