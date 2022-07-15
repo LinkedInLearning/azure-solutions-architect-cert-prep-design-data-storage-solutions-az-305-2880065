@@ -141,9 +141,9 @@ Create a vCore Db, this script requires two test users to have been created in A
     
     az group create --name rg-datamasking-sql --location <location>
 
-Get your user's objectID
+Get your user's id from Microsoft Graph
 
-    az ad signed-in-user show --query objectId -o tsv
+    az ad signed-in-user show --query id -o tsv
 
 Create an Azure SQL DB with Azure AD authenticaiton enabled
 
@@ -264,8 +264,10 @@ Create a VNET and Subnet, optionally create a key vault, then create a Azure SQL
 
     az deployment group create --name 'sql-vm-non-sql-vm' --resource-group rg-sqlvm-sql --template-file main.bicep --parameters deploy-sqlvm.parameters.json --verbose
 
-Now RDP to the VM Without SQL Installed and manually setup the partitions for F, G, H drives and install SQL Developer Edition and configure data on F, Logs on G and tempdb on H.
+Now RDP to the VM Without SQL Installed and manually setup the partitions for F, G, H drives and install SQL Developer Edition and configure data on F, Logs on G and tempdb on H. The login is sqladmin and you provided the password when the Azure CLI command above executed. Developer Edition requires a custom install to setup the disks correctly.
 
-Now register the SQL IaaS Agent Extension in full mode, this is a hybrid benefit license as you have installed Developer Edition (PAYG), AHUB is hybrind benefit for Enterprise or Standard Edn with software assurance and DR for a free DR replica.
+Developer edition - https://www.microsoft.com/en-gb/sql-server/sql-server-downloads?rtc=1
 
-    az sql vm create --name az305mansql --resource-group rg-sqlvm-sql --location <vm_location> --license-type AHUB --sql-mgmt-type Full
+Now register the SQL IaaS Agent Extension in full mode, this is a hybrid benefit license as you have installed Developer Edition (PAYG), AHUB is hybrind benefit for Enterprise or Standard Edn with software assurance and DR for a free DR replica. 
+
+    az sql vm create --name az305mansql --resource-group rg-sqlvm-sql --location <vm_location> --license-type PAYG --sql-mgmt-type Full

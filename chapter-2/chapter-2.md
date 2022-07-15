@@ -141,7 +141,7 @@ Setup the storage account with two containers and two tagged blobs each
 
 Hitting the find blobs with tags endpoint requires authorization, so tag a SAS Token with list, and blob index permissions at the service level
 
-    https://<accountname>.blob.core.windows.net/?comp=blobs&where=Project%3D%20%27Apollo&<SAS Token>
+    https://<accountname>.blob.core.windows.net/?comp=blobs&where=project%3D%27apollo%27&<SAS Token>
 
 
 ## 02_08 Protecting blobs

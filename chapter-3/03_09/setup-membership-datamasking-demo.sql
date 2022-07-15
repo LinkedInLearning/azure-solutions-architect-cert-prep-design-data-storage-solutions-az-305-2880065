@@ -1,4 +1,4 @@
---Create two contained user for your database, these should be the UPNs for the two test users
+--Create two contained users for your database, these should be the UPNs for the two test users
 CREATE USER [<Azure_AD_principal_name>] FROM EXTERNAL PROVIDER;
 CREATE USER [<Azure_AD_principal_name>] FROM EXTERNAL PROVIDER;
 
