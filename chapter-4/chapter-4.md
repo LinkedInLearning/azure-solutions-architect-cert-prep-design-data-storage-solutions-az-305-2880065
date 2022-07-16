@@ -23,14 +23,14 @@ Setup to alter the consistency level manually for a SQL API account
 
     az group create --name rg-cons-level --location eastasia
 
-az deployment group create --resource-group rg-cons-level --template-file cosmosdb-sqlapi.bicep
+    az deployment group create --resource-group rg-cons-level --template-file cosmosdb-sqlapi.bicep
 
 Pass in a consistency level to set up the consistency policy
 
     az deployment group create --resource-group rg-cons-level --template-file cosmosdb-sqlapi-level.bicep --parameters defaultConsistencyLevel=BoundedStaleness
 
 
-## 04_03 Cosmos DB - Capacity and indexing (RUs)
+## 04_04 Cosmos DB - Capacity and indexing (RUs)
 
 This demo uses the dotnet cosmicworks tool - https://www.nuget.org/packages/CosmicWorks/
 
@@ -44,8 +44,18 @@ Setup an account with account name of cosmicworks, database of products and part
 
 Copy the endpoint and write key from the created Cosmos DB
 
-Use the cosmic works tool to pupulate the cosmicworks sample database
+Use the cosmic works tool to pupulate the cosmicworks sample database, needs a beta due to dotnet version in cloudshell, its possible this version may now be GA
 
-    dotnet tool install --global CosmicWorks --version 1.0.7
+    dotnet tool install --global CosmicWorks --version 2.0.0-beta-01
 
     cosmicworks --endpoint <cosmos-endpoint> --key <cosmos-key> --datasets product
+
+Execute a query
+
+    SELECT * FROM products where products.sku = "HB-M918"
+
+Remove the indexing
+
+    {
+        "indexingMode": "none"
+    }
