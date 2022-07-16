@@ -23,6 +23,8 @@ Setup to alter the consistency level manually for a SQL API account
 
     az group create --name rg-cons-level --location eastasia
 
+az deployment group create --resource-group rg-cons-level --template-file cosmosdb-sqlapi.bicep
+
 Pass in a consistency level to set up the consistency policy
 
     az deployment group create --resource-group rg-cons-level --template-file cosmosdb-sqlapi-level.bicep --parameters defaultConsistencyLevel=BoundedStaleness
